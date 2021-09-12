@@ -16,3 +16,31 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+//Route::HTTPメソッド(URI､ ACTION)
+Route::get('/route/hello', function () {
+    return '<h1>Hello from Route!</h1>';
+});
+
+Route::get('view/hello', function() {
+    return view('message.hello');
+});
+// messageディレクトリのhello
+
+Route::get('view/var', function () {
+    $variable = 'Hello from web.php';
+    return view('message.var', ['variable' =>$variable]);
+});
+
+Route::get('/view/word/{msg}', function ($msg) {
+    return view('message.word', ['msg' => $msg]);
+});
+
+Route::get('view/word/{name}/{msg}', function ($name, $msg) {
+    return view('message.word2', [
+        'name' => $name, 
+        'msg' => $msg
+    ]);
+});
+
+
